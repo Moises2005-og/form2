@@ -1,9 +1,8 @@
 const primeiroNome = document.getElementById("primeiro_nome")
 const ultimoNome = document.getElementById("ultimo_nome")
 const email = document.getElementById("email")
-const number = document.getElementById("telefone")
-const message = document.getElementById("message")
-
+const password = document.getElementById("password")
+const confirmPassword = document.getElementById("confirmPassword")
 
 let obj = []
 
@@ -14,11 +13,14 @@ const handleSubmit = addEventListener("submit", function(event) {
         primeiro_nome: primeiroNome.value,
         ultimo_nome: ultimoNome.value,
         Email: email.value,
-        phoneNumber: number.value,
-        Message: message.value
+        pass: password.value
     }
 
     obj.push(payload)
 
-    this.localStorage.setItem("data", JSON.stringify(obj))
+    localStorage.setItem("data", JSON.stringify(obj))
 })
+
+const obterDados = JSON.parse(localStorage.getItem("data"))
+
+const busca = obterDados.map(item => item.Email)
